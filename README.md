@@ -40,3 +40,9 @@ reference https://nextjs.org/docs/pages/api-reference/components/font
 
 ### swap between two icons
 https://blog.logrocket.com/react-icons-comprehensive-tutorial-examples/
+
+
+### Next Auth
+https://next-auth.js.org/getting-started/example#new-project
+
+https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/

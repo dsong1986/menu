@@ -1,12 +1,25 @@
 'use client'
 import { FcMenu } from 'react-icons/fc'
 import { FaUserAlt } from 'react-icons/fa'
+import { useCallback, useState } from 'react'
+import MenuItem from './MenuItem'
+import useRegisterModal from '@/app/hooks/useRegisterModal'
 
 const UserMenu = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const registerModal = useRegisterModal();
+
+    const toggleOpen = useCallback(() => {
+        setIsOpen(!isOpen);
+    }, [isOpen]);
+
 
     return (
-
-        <div className='rounded-full  
+        <div className='relative'>
+            <div
+                onClick={toggleOpen}
+              
+                className='rounded-full  
             border-[1px] h-12 
             flex flex-row 
             items-center
@@ -17,8 +30,8 @@ const UserMenu = () => {
             border-cyan-900 
             gap-2
             '>
-            <FcMenu size={26} />
-            <div className='
+                <FcMenu size={26} />
+                <div className='
                     hidden 
                     md:flex
                     rounded-full
@@ -28,10 +41,34 @@ const UserMenu = () => {
                     items-center
                     justify-center
                     '>
-                <FaUserAlt size={20} color="white" />
+                    <FaUserAlt size={20} color="white" />
+                </div>
+             
             </div>
-        </div>
+            {isOpen && (
+                    <div className='
+                    absolute
+                    right-0
+                    w-[240px]
+                    bg-white
+                    rounded-xl
+                    border-[1px]
+                    top-14
+                    shadow-xl
+                    py-2
+                    flex
+                    flex-col
+                    gap-2
+                    '> 
+                        <MenuItem onClick={() => {}} label="Log in"  fontWeight />
+                        <MenuItem onClick={() => {registerModal.onOpen();setIsOpen(false)}} label="Sign up" />
+                        <hr />
+                        <MenuItem onClick={() => {}} label="Contact us" />
+                        <MenuItem onClick={() => {}} label="Help" />
 
+                    </div>
+                )}
+        </div>
     )
 }
 
