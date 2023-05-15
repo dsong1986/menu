@@ -46,3 +46,20 @@ https://blog.logrocket.com/react-icons-comprehensive-tutorial-examples/
 https://next-auth.js.org/getting-started/example#new-project
 
 https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/
+
+
+### React hook form
+https://react-hook-form.com/get-started#TypeScript
+
+### prisma
+https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb
+
+```bash
+npx prisma db push 
+```
+create the index on the database
+if you want the @unique works, do not forget to run this command
+
+
+### toaster
+do not forget to add <Toaster> tag in the layout

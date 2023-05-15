@@ -6,7 +6,6 @@ import {
     UseFormRegister 
 } from 'react-hook-form'
 
-import {BiDollar} from 'react-icons/bi'
 
 interface InputProps {
     id: string;
@@ -33,18 +32,7 @@ const Input: React.FC<InputProps> = ({
    
     return (
         <div className='w-full relative'>
-            {formatPrice && (
-                <BiDollar
-                size={20}  
-                className="
-                  text-neutral-700
-                  absolute
-                  top-3
-                  left-2
-                "
-              />
-            )
-            }
+          
            <input 
                 id={id}
                 type={type}
@@ -72,7 +60,7 @@ const Input: React.FC<InputProps> = ({
             
             <label className={`
                 absolute
-                text-md
+                text-lg
                 text-gray-500
                 duration-150
                 transform
@@ -85,8 +73,10 @@ const Input: React.FC<InputProps> = ({
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:translate-y-0
                 peer-focus:scale-75
-                peer-focus:-translate-y-4
-                peer-focus:-translate-x-1
+                peer-focus:-translate-y-6
+                peer-focus:translate-x-2
+                peer-focus:bg-white
+                peer-focus:px-2
                 ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}               
             `}>
                 {label}
