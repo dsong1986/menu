@@ -10,7 +10,7 @@ import Input from "../inputs/Input";
 import { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
-
+import { useSession, signIn, signOut } from "next-auth/react";
 import {
     SubmitHandler,
     useForm,
@@ -20,6 +20,10 @@ import {
 
 
 const RegisterModal = () => {
+    const { data: session, status } = useSession()
+    const userEmail = session?.user?.email
+    
+    
     const registerModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -101,7 +105,7 @@ const RegisterModal = () => {
                     icon={FcGoogle}
                 />
                 <Button
-                    onClick={() => { }}
+                    onClick={() => {signIn('github')}}
                     label="sign in with Github"
                     icon={AiFillGithub}
                 />
@@ -126,7 +130,7 @@ const RegisterModal = () => {
     return (
         <Modal
             isOpen={registerModal.isOpen}
-            title="Sign up"
+            title="{Sign up"
             onClose={handleClose}
             body={bodyContent}
         />

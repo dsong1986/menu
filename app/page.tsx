@@ -1,12 +1,9 @@
 import Image from 'next/image'
 
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "./libs/auth";
 
-export default async function Home({ Component, pageProps }: AppProps) {
-  const session = await getServerSession(authOptions);
-  console.log(session);
+export default async function Home() {
+
   return (
     <main
     style={{
@@ -16,6 +13,7 @@ export default async function Home({ Component, pageProps }: AppProps) {
       height: "70vh",
     }}
   >
+  
    
   </main>
   )

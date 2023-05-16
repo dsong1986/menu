@@ -63,3 +63,7 @@ if you want the @unique works, do not forget to run this command
 
 ### toaster
 do not forget to add <Toaster> tag in the layout
+
+
+### next auth
+https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/

@@ -4,10 +4,13 @@ import { FaUserAlt } from 'react-icons/fa'
 import { useCallback, useState } from 'react'
 import MenuItem from './MenuItem'
 import useRegisterModal from '@/app/hooks/useRegisterModal'
+import LoginModal from '../modals/LoginModal'
+import useLoginModal from '@/app/hooks/useLoginModal'
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
 
     const toggleOpen = useCallback(() => {
         setIsOpen(!isOpen);
@@ -60,7 +63,7 @@ const UserMenu = () => {
                     flex-col
                     gap-2
                     '> 
-                        <MenuItem onClick={() => {}} label="Log in"  fontWeight />
+                        <MenuItem onClick={() => {loginModal.onOpen(); setIsOpen(false)}} label="Log in"  fontWeight />
                         <MenuItem onClick={() => {registerModal.onOpen();setIsOpen(false)}} label="Sign up" />
                         <hr />
                         <MenuItem onClick={() => {}} label="Contact us" />
