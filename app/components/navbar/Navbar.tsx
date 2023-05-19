@@ -7,6 +7,7 @@ import ShoppingCart from "./ShoppingCart";
 import Image from "next/image";
 
 const Navbar = () => {
+
     return (
         <div className=" bg-white border-gray-200 shadow-lg ">
             <Container>

@@ -67,3 +67,14 @@ do not forget to add <Toaster> tag in the layout
 
 ### next auth
 https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/
+
+
+npm i -D prisma
+npx prisma init
+npx prisma db push
+
+npm install next-auth @prisma/client @next-auth/prisma-adapter
+
+
+
+npm install -D @types/bcrypt

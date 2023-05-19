@@ -39,7 +39,7 @@ const RegisterModal = () => {
     
     const onSubmit =  handleSubmit( async(data) => {
        setIsLoading(true);
-       console.log(data);
+    //    console.log(data);
        
        const res = axios.post('/api/register', data);
        const error = (await res).data.error;
@@ -55,7 +55,7 @@ const RegisterModal = () => {
                toast.error('Something went wrong!');
            }
        }
-      console.log('loading will end');
+
       
        setIsLoading(false);
     });
@@ -105,7 +105,7 @@ const RegisterModal = () => {
                     icon={FcGoogle}
                 />
                 <Button
-                    onClick={() => {signIn('github')}}
+                    onClick={() => signIn('github')}
                     label="sign in with Github"
                     icon={AiFillGithub}
                 />
@@ -130,7 +130,7 @@ const RegisterModal = () => {
     return (
         <Modal
             isOpen={registerModal.isOpen}
-            title="{Sign up"
+            title="Sign up"
             onClose={handleClose}
             body={bodyContent}
         />

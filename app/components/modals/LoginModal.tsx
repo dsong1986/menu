@@ -55,23 +55,23 @@ const LoginModal = () => {
       
         // console.log(data);
      
-        // signIn('credentials', { 
-        //     ...data, 
-        //     redirect: false,
-        //   })
-        //   .then((callback) => {
-        //     setIsLoading(false);
+        signIn('credentials', { 
+            ...data, 
+            redirect: false,
+          })
+          .then((callback) => {
+            setIsLoading(false);
       
-        //     if (callback?.ok) {
-        //       toast.success('Logged in');
-        //     //   router.refresh();
-        //       loginModal.onClose();
-        //     }
+            if (callback?.ok) {
+              toast.success('Logged in');
+            //   router.refresh();
+              loginModal.onClose();
+            }
             
-        //     if (callback?.error) {
-        //       toast.error(callback.error);
-        //     }
-        //   });
+            if (callback?.error) {
+              toast.error(callback.error);
+            }
+          });
         
     });
 
