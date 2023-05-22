@@ -5,9 +5,14 @@ import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import ShoppingCart from "./ShoppingCart";
 import Image from "next/image";
+import { SafeUser } from "@/app/types";
 
-const Navbar = () => {
-
+interface NavbarProp {
+    currentUser?: SafeUser | null;
+}
+const Navbar: React.FC<NavbarProp> = ({
+    currentUser
+}) => {    
     return (
         <div className=" bg-white border-gray-200 shadow-lg ">
             <Container>
@@ -22,7 +27,7 @@ const Navbar = () => {
                  ">
                     <Logo />
                     <SearchBar />
-                    <UserMenu />
+                    <UserMenu currentUser={currentUser}/>
                 </div>
             </Container>
         </div>

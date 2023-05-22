@@ -20,8 +20,8 @@ import {
 
 
 const RegisterModal = () => {
-    const { data: session, status } = useSession()
-    const userEmail = session?.user?.email
+    // const { data: session, status } = useSession()
+    // const userEmail = session?.user?.email
     
     
     const registerModal = useRegisterModal();

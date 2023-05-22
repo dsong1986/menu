@@ -20,20 +20,16 @@ const LoginModal = () => {
    
     const router = useRouter();
 
-    const { data: session, status } = useSession()
+//     const { data: session, status } = useSession()
 
-    console.log(session);
+//     console.log(session);
     
-    const userEmail = session?.user?.email
-   if(session){
-        console.log('I have some sessions');
-        console.log(session);
+//     const userEmail = session?.user?.email
+//    if(session){
+//         console.log('I have some sessions');
+//         console.log(session);
         
-   }
-
-
-
-    
+//    }
 
     //  Two inputs, email + password
     //  default value is set to be an empty string.
@@ -64,7 +60,7 @@ const LoginModal = () => {
       
             if (callback?.ok) {
               toast.success('Logged in');
-            //   router.refresh();
+              router.refresh();
               loginModal.onClose();
             }
             

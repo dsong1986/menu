@@ -6,8 +6,16 @@ import MenuItem from './MenuItem'
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 import LoginModal from '../modals/LoginModal'
 import useLoginModal from '@/app/hooks/useLoginModal'
+import { SafeUser } from '@/app/types'
+import { signOut } from 'next-auth/react'
 
-const UserMenu = () => {
+interface UserMenuProp {
+    currentUser?: SafeUser | null;
+}
+
+const UserMenu: React.FC<UserMenuProp> = ({
+    currentUser,
+}) => {    
     const [isOpen, setIsOpen] = useState(false);
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
@@ -15,7 +23,6 @@ const UserMenu = () => {
     const toggleOpen = useCallback(() => {
         setIsOpen(!isOpen);
     }, [isOpen]);
-
 
     return (
         <div className='relative'>
@@ -63,8 +70,9 @@ const UserMenu = () => {
                     flex-col
                     gap-2
                     '> 
-                        <MenuItem onClick={() => {loginModal.onOpen(); setIsOpen(false)}} label="Log in"  fontWeight />
-                        <MenuItem onClick={() => {registerModal.onOpen();setIsOpen(false)}} label="Sign up" />
+                     {!currentUser &&  <MenuItem onClick={() => {loginModal.onOpen(); setIsOpen(false)}} label="Log in"  fontWeight />}
+                      {!currentUser &&  <MenuItem onClick={() => {registerModal.onOpen();setIsOpen(false)}} label="Sign up" />}
+                      {currentUser && <MenuItem onClick={() => {  signOut(); setIsOpen(false)}} label="Sign out" />}
                         <hr />
                         <MenuItem onClick={() => {}} label="Contact us" />
                         <MenuItem onClick={() => {}} label="Help" />

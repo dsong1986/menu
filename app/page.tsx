@@ -1,6 +1,5 @@
 import Image from 'next/image'
-
-
+import User from './components/actions/getCurrentUser'
 
 export default async function Home() {
 
@@ -13,8 +12,7 @@ export default async function Home() {
       height: "70vh",
     }}
   >
-  
-   
+ 
   </main>
   )
 }
