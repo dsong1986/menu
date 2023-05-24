@@ -15,7 +15,8 @@ interface InputProps {
     errors: FieldErrors;
     register: UseFormRegister<FieldValues>;
     required?: boolean;
-    formatPrice?: boolean
+    formatPrice?: boolean;
+    placeHolder?:string;
  
 }
 const Input: React.FC<InputProps> = ({
@@ -26,7 +27,8 @@ const Input: React.FC<InputProps> = ({
     register,
     required,
     errors,
-    formatPrice
+    formatPrice,
+    placeHolder,
  
 }) => {
    
@@ -37,8 +39,9 @@ const Input: React.FC<InputProps> = ({
                 id={id}
                 type={type}
                 disabled = {disabled}
-                placeholder=' '
+                // placeholder={placeHolder}
                 {...register(id, {required})}
+              
                 className={`
                     peer
                     w-full

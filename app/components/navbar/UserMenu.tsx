@@ -8,6 +8,7 @@ import LoginModal from '../modals/LoginModal'
 import useLoginModal from '@/app/hooks/useLoginModal'
 import { SafeUser } from '@/app/types'
 import { signOut } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 interface UserMenuProp {
     currentUser?: SafeUser | null;
@@ -15,10 +16,11 @@ interface UserMenuProp {
 
 const UserMenu: React.FC<UserMenuProp> = ({
     currentUser,
-}) => {    
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
+    const router = useRouter();
 
     const toggleOpen = useCallback(() => {
         setIsOpen(!isOpen);
@@ -28,7 +30,7 @@ const UserMenu: React.FC<UserMenuProp> = ({
         <div className='relative'>
             <div
                 onClick={toggleOpen}
-              
+
                 className='rounded-full  
             border-[1px] h-12 
             flex flex-row 
@@ -53,10 +55,10 @@ const UserMenu: React.FC<UserMenuProp> = ({
                     '>
                     <FaUserAlt size={20} color="white" />
                 </div>
-             
+
             </div>
             {isOpen && (
-                    <div className='
+                <div className='
                     absolute
                     right-0
                     w-[240px]
@@ -69,16 +71,17 @@ const UserMenu: React.FC<UserMenuProp> = ({
                     flex
                     flex-col
                     gap-2
-                    '> 
-                     {!currentUser &&  <MenuItem onClick={() => {loginModal.onOpen(); setIsOpen(false)}} label="Log in"  fontWeight />}
-                      {!currentUser &&  <MenuItem onClick={() => {registerModal.onOpen();setIsOpen(false)}} label="Sign up" />}
-                      {currentUser && <MenuItem onClick={() => {  signOut(); setIsOpen(false)}} label="Sign out" />}
-                        <hr />
-                        <MenuItem onClick={() => {}} label="Contact us" />
-                        <MenuItem onClick={() => {}} label="Help" />
+                    '>
+                    {currentUser && <MenuItem onClick={() => { router.push('/customer/account')}} label="Account" />}
+                    {!currentUser && <MenuItem onClick={() => { loginModal.onOpen(); setIsOpen(false) }} label="Log in" fontWeight />}
+                    {!currentUser && <MenuItem onClick={() => { registerModal.onOpen(); setIsOpen(false) }} label="Sign up" />}
+                    {currentUser && <MenuItem onClick={() => { signOut(); setIsOpen(false) }} label="Sign out" />}
+                    <hr />
+                    <MenuItem onClick={() => { }} label="Contact us" />
+                    <MenuItem onClick={() => { }} label="Help" />
 
-                    </div>
-                )}
+                </div>
+            )}
         </div>
     )
 }

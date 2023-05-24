@@ -8,13 +8,15 @@ interface ButtonProps {
     icon?: IconType;
     label?: string;
     onClick: () => void;
-    darkMode?: boolean
+    darkMode?: boolean;
+    small?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
     icon: Icon,
     label,
     onClick,
+    small,
     darkMode,
 }) => {
     return (
@@ -23,13 +25,14 @@ const Button: React.FC<ButtonProps> = ({
             className={`
             flex justify-start
             p-3 rounded-xl
-            mx-4
+            
             border-[1px]
             border-black
             disabled:cursor-not-allowed
      
             ${darkMode ? "bg-cyan-800" : "bg-white"}     
-            ${darkMode ? "hover:bg-cyan-700" : "hover:bg-slate-50"}          
+            ${darkMode ? "hover:bg-cyan-700" : "hover:bg-slate-50"} 
+            ${small ? "w-[100px]" : "w-full"}         
         `}>
             <div className="
             w-full 

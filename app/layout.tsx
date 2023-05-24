@@ -9,6 +9,8 @@ import LoginModal from "./components/modals/LoginModal";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import getCurrentUser from "./components/actions/getCurrentUser";
+import { NextAuthProvider } from "./providers";
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -24,9 +26,6 @@ export default async function RootLayout({
 
 }) {
   const currentUser = await getCurrentUser();
-  // console.log('layout');
-  
-  // console.log(currentUser);
 
   return (
     <html lang="en">
@@ -35,7 +34,7 @@ export default async function RootLayout({
         <LoginModal />
         <Toaster />
         <Navbar currentUser={currentUser}/>
-        <div>{children}</div>
+        <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>
   )
