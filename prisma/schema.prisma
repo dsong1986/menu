@@ -26,6 +26,7 @@ model User {
   favoriteIds     String[] @db.ObjectId
 
   accounts Account[]
+  business Business[]
 
 }
 
@@ -48,3 +49,18 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
+model Business {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  bId String
+  userId             String   @db.ObjectId
+  bName String?
+  bTel String?
+  bAddress1 String?
+  bAddress2 String?
+  bCity String?
+  bZipcode String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+}

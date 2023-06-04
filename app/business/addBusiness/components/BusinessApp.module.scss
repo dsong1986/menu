@@ -1,0 +1,46 @@
+@import '../styles/variables.scss';
+@import "../styles/functions.scss";
+@import "../styles/mixins.scss";
+
+.app {
+  position: relative;
+  height: auto;
+  font-family: var(--font);
+
+  @include min-width(medium) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    place-self: center;
+    padding: var(--spacer-16);
+    width: min(rem(940), 90%);
+    min-height: rem(600);
+    background-color: var(--color-white);
+    border-radius: var(--spacer-16);
+  }
+  @include min-width(large) {
+    grid-template-columns: 3fr 7fr;
+  }
+
+  --indicator-bottom-overlap: #{rem(68)};
+}
+
+.stepsWrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  padding-bottom: rem(80);
+
+  @include min-width(medium) {
+    padding: 0;
+  }
+}
+
+.controllersMobileWrapper {
+  position: absolute; // [overlapping elements]-> negatative margin affects it
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: block;
+  padding: rem(16);
+  background-color: var(--color-white);
+}

@@ -1,0 +1,91 @@
+@import "../../styles/variables.scss";
+@import "../../styles/functions.scss";
+@import "../../styles/mixins.scss";
+
+.calculation {
+  padding: rem(16) rem(24);
+  background-color: var(--color-secondary-lightest);
+  border-radius: rem(8);
+}
+
+.plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.planLabel {
+  display: block;
+  margin-bottom: rem(5);
+  color: var(--color-primary);
+  font-size: rem(16);
+  font-weight: var(--font-weight-medium);
+}
+
+.planChange {
+  @include baseTransition();
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  color: var(--color-grey);
+  font-size: rem(14);
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    color: var(--color-accent-one);
+  }
+}
+
+.planPrice {
+  display: block;
+  color: var(--color-primary);
+  font-size: rem(16);
+  font-weight: var(--font-weight-bold);
+}
+
+.addonsList {
+  margin-top: rem(24);
+  padding-top: rem(16);
+  border-top: 1px solid var(--color-bg-border);
+  list-style: none;
+}
+
+.addonsItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:not(:last-child) {
+    margin-bottom: rem(16);
+  }
+}
+
+.addonsLabel {
+  color: var(--color-grey);
+  font-size: rem(14);
+}
+
+.addonsPrice {
+  color: var(--color-primary);
+  font-size: rem(14);
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(16) rem(24);
+}
+
+.totalLabel {
+  color: var(--color-grey);
+  font-size: rem(14);
+}
+
+.totalPrice {
+  color: var(--color-accent-one);
+  font-size: rem(20);
+  font-weight: var(--font-weight-bold);
+}

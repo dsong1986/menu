@@ -1,0 +1,132 @@
+@import "../styles/variables.scss";
+@import "../styles/functions.scss";
+@import "../styles/mixins.scss";
+
+.container {
+  padding: rem(32) rem(16) calc(#{rem(32)} + var(--indicator-bottom-overlap));
+  background-color: var(--color-secondary-bg);
+  background-image: url("../../../../public/images/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include min-width(medium) {
+    padding: rem(40) rem(32);
+    background-image: url("../../../../public/images/bg-sidebar-desktop.svg");
+    border-radius: var(--spacer-16);
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+
+  @include min-width(medium) {
+    flex-direction: column;
+    justify-content: left;
+  }
+}
+
+.listItem {
+  text-transform: uppercase;
+
+  @include min-width(medium) {
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: rem(30);
+    }
+  }
+
+  &:not(:last-child) {
+    margin-right: rem(30);
+  }
+}
+
+.listItem,
+.button {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: "number";
+
+  @include min-width(medium) {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "number step" "number title";
+
+    column-gap: rem(16);
+  }
+}
+
+.next,
+.current,
+.past {
+  composes: listItem;
+}
+
+.numberBox {
+  @include baseTransition();
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  grid-area: number;
+  height: rem(33);
+  width: rem(33);
+  border: 1px solid var(--color-white);
+  border-radius: 100px;
+  color: var(--color-white);
+  font-size: rem(14);
+
+  .current & {
+    background-color: var(--color-accent-light);
+    border: 1px solid var(--color-accent-light);
+    color: var(--color-primary);
+  }
+
+  .past & {
+    background-color: var(--color-accent-light);
+    border: 1px solid var(--color-accent-light);
+    opacity: 0.6;
+    color: var(--color-primary);
+  }
+}
+
+.number {
+  display: inline-block;
+}
+
+.stepBox {
+  @include visuallyhidden();
+  grid-area: step;
+  color: var(--color-secondary-light);
+  font-size: rem(12);
+
+  @include min-width(medium) {
+    @include visuallyhidden-reset();
+  }
+}
+
+.label {
+  @include visuallyhidden();
+  grid-area: title;
+  color: var(--color-white);
+  font-size: rem(14);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+
+  @include min-width(medium) {
+    @include visuallyhidden-reset();
+  }
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  text-transform: inherit;
+  cursor: pointer;
+}

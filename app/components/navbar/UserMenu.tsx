@@ -9,6 +9,8 @@ import useLoginModal from '@/app/hooks/useLoginModal'
 import { SafeUser } from '@/app/types'
 import { signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { useEffect, useRef } from "react";
+
 
 interface UserMenuProp {
     currentUser?: SafeUser | null;
@@ -21,13 +23,33 @@ const UserMenu: React.FC<UserMenuProp> = ({
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
     const router = useRouter();
+    const ref = useRef(null);
+
+
+    useEffect(() => {
+        const handleOutSideClick = (event) => {
+            if (isOpen && ref.current && !ref.current?.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        window.addEventListener("mousedown", handleOutSideClick);
+
+        return () => {
+            window.removeEventListener("mousedown", handleOutSideClick);
+        };
+    }, [ref, isOpen]);
 
     const toggleOpen = useCallback(() => {
         setIsOpen(!isOpen);
     }, [isOpen]);
 
+  
+   
+
     return (
-        <div className='relative'>
+        <div ref={ref}
+            className='relative'>
             <div
                 onClick={toggleOpen}
 
@@ -72,14 +94,16 @@ const UserMenu: React.FC<UserMenuProp> = ({
                     flex-col
                     gap-2
                     '>
-                    {currentUser && <MenuItem onClick={() => { router.push('/customer/account')}} label="Account" />}
+                    {currentUser && <MenuItem onClick={() => { setIsOpen(false);router.push('/customer/account') }} label="Account" />}
                     {!currentUser && <MenuItem onClick={() => { loginModal.onOpen(); setIsOpen(false) }} label="Log in" fontWeight />}
                     {!currentUser && <MenuItem onClick={() => { registerModal.onOpen(); setIsOpen(false) }} label="Sign up" />}
                     {currentUser && <MenuItem onClick={() => { signOut(); setIsOpen(false) }} label="Sign out" />}
                     <hr />
                     <MenuItem onClick={() => { }} label="Contact us" />
                     <MenuItem onClick={() => { }} label="Help" />
-
+                    <hr />
+                    <MenuItem onClick={() => { setIsOpen(false);router.push('/business/restaurants')}} label="Be a partner restaurant" />
+                    <MenuItem onClick={() => { }} label="Careers" />
                 </div>
             )}
         </div>

@@ -71,7 +71,11 @@ https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/
 
 npm i -D prisma
 npx prisma init
-npx prisma db push
+
+### update the database schema
+```bash
+npx prisma db push 
+```
 
 npm install next-auth @prisma/client @next-auth/prisma-adapter
 
@@ -82,3 +86,13 @@ npm install -D @types/bcrypt
 
 ### boax shadows
 https://manuarora.in/boxshadows
+
+
+### detect click outside react component
+https://dev.to/collegewap/how-to-detect-click-outside-in-a-react-component-2b6k
+
+
+### hook form
+reference:
+https://codesandbox.io/s/ydl9v?file=/src/store.ts
+https://www.frontendmentor.io/solutions/multistep-form-react-typescript-react-hook-form-css-modules-OYjraPh09t

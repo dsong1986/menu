@@ -1,8 +1,8 @@
 import Container from "@/app/components/Container"
 import { poppins400, notoSans700 } from "@/app/styles/fonts";
 import InfoCard from "./InfoCard";
-
 import getCurrentUser from "@/app/components/actions/getCurrentUser";
+import Link from "next/link";
 
 export default async function PersonalInfo() {
     const currentUser = await getCurrentUser();
@@ -15,7 +15,7 @@ export default async function PersonalInfo() {
 
                 {/* Navigation */}
                 <div className="flex flex-row gap-4 pt-6 pb-2 items-center text-sm">
-                    <div>Account</div>
+                    <Link href="/customer/account">Account</Link>
                     <h1 className="text-neutral-500 text-xl font-light"> 	&#62; </h1>
                     <div>Personal info</div>
                 </div>
